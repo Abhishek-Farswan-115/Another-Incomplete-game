@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq728pmen0xvo"]
+
+[ext_resource type="PackedScene" uid="uid://cxi56s5btmmrq" path="res://GLTF/Level.glb" id="1_ea3jl"]
+[ext_resource type="PackedScene" uid="uid://rxsvnbwdeuqf" path="res://Scenes/warrior.tscn" id="2_4hgch"]
+
+[node name="World" type="Node3D"]
+
+[node name="Level" parent="." instance=ExtResource("1_ea3jl")]
+
+[node name="Warrior" parent="." instance=ExtResource("2_4hgch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.89403, 3.58533, -18.3651)

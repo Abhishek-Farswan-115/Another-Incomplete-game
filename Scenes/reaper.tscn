@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://h7mg7478vn03"]
+
+[ext_resource type="PackedScene" uid="uid://8ith5o1qu0ev" path="res://GLTF/Enemy/Reaper_enemy.glb" id="1_mvk8v"]
+[ext_resource type="Script" path="res://Scenes/reaper.gd" id="2_s8avo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e0071"]
+radius = 0.821949
+height = 3.65339
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_snlt0"]
+radius = 18.057
+
+[node name="Reaper" groups=["Enemy"] instance=ExtResource("1_mvk8v")]
+script = ExtResource("2_s8avo")
+SPEED = 7
+
+[node name="Evil_reaper" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74867, 0)
+shape = SubResource("CapsuleShape3D_e0071")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]
+target_desired_distance = 2.0
+agent_height_offset = 0.1
+avoidance_enabled = true
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="3"]
+
+[node name="Range" type="Area3D" parent="." index="4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Range" index="0"]
+shape = SubResource("SphereShape3D_snlt0")
+
+[node name="Eyes" type="Node3D" parent="." index="5"]
+transform = Transform3D(-0.315881, 0, 0.948799, 0, 1, 0, -0.948799, 0, -0.315881, 0, 0, 0)
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfir3v2gcpnqp"]
+
+[ext_resource type="PackedScene" uid="uid://dro5yvil826la" path="res://GLTF/Friendly_crystal.glb" id="1_bq8rq"]
+[ext_resource type="Script" path="res://Scripts/friendly_crystal.gd" id="2_psigd"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3jftg"]
+animation = &"IDLE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1rqco"]
+animation = &"FLY"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_nfi81"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_3jftg")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_1rqco")
+blend_point_1/pos = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f5kfi"]
+
+[node name="friendly_crystal" groups=["Ally"] instance=ExtResource("1_bq8rq")]
+script = ExtResource("2_psigd")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(0, -0.323594, 0)
+bones/0/rotation = Quaternion(-0.210252, 0, 4.66853e-17, 0.977647)
+bones/1/position = Vector3(0.288188, 0.42231, 0.162354)
+bones/1/rotation = Quaternion(0.122893, -0.177686, -0.475685, 0.852672)
+bones/2/position = Vector3(0.189802, 0.172974, 0.162354)
+bones/2/rotation = Quaternion(0.197158, -0.0883396, -0.848555, 0.48299)
+bones/3/position = Vector3(-0.288188, 0.42231, 0.162354)
+bones/3/rotation = Quaternion(0.122893, 0.177686, 0.475685, 0.852672)
+bones/4/position = Vector3(-0.189802, 0.172974, 0.162354)
+bones/4/rotation = Quaternion(0.197158, 0.0883396, 0.848555, 0.48299)
+bones/5/rotation = Quaternion(1.12001e-09, -1.21731e-07, 0.886314, 0.463085)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeBlendSpace1D_nfi81")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/blend_position = 1.00795
+
+[node name="Follower_Nav" type="NavigationAgent3D" parent="." index="3"]
+target_desired_distance = 2.0
+navigation_layers = 2
+avoidance_enabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="4"]
+shape = SubResource("SphereShape3D_f5kfi")
+
+[connection signal="velocity_computed" from="Follower_Nav" to="." method="_on_follower_nav_velocity_computed"]

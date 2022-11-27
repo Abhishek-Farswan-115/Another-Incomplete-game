@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c62bm3gxadtvr"]
+
+[ext_resource type="PackedScene" uid="uid://ba6tg7gifyfn" path="res://GLTF/Statue.glb" id="1_phufm"]
+
+[node name="Statue" instance=ExtResource("1_phufm")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

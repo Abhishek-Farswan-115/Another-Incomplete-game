@@ -1,0 +1,181 @@
+[gd_scene load_steps=15 format=3 uid="uid://big1l1g4pnjwp"]
+
+[ext_resource type="PackedScene" uid="uid://bflbbb2wj2uvt" path="res://Scenes/particles_3d.tscn" id="1_lmu15"]
+[ext_resource type="PackedScene" uid="uid://q8hv71ja8aeq" path="res://GLTF/ruin_statue.glb" id="1_mxggy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sbqat"]
+size = Vector3(2.00031, 3.62386, 2.08214)
+
+[sub_resource type="Gradient" id="Gradient_3bflr"]
+offsets = PackedFloat32Array(0, 0.260638, 1)
+colors = PackedColorArray(0, 1, 0.472009, 1, 0, 0.800781, 0.331998, 1, 0.0598869, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6rwql"]
+gradient = SubResource("Gradient_3bflr")
+
+[sub_resource type="Curve" id="Curve_3q4bq"]
+_data = [Vector2(0, 0.245455), 0.0, 0.0, 0, 0, Vector2(0.194313, 1), 0.0, 0.0, 0, 0, Vector2(0.635071, 0.781818), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ea0a3"]
+curve = SubResource("Curve_3q4bq")
+
+[sub_resource type="Curve" id="Curve_wgcgw"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, -40), 0.0, 0.0, 0, 0, Vector2(0.21327, 10.9091), 0.0, 0.0, 0, 0, Vector2(0.748815, 0), 0.0, 0.0, 0, 0, Vector2(1, 200), 1381.09, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_n6hk6"]
+curve = SubResource("Curve_wgcgw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_56ldg"]
+resource_local_to_scene = true
+emission_shape = 1
+emission_sphere_radius = 0.5
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.5
+angular_velocity_min = -443.08
+angular_velocity_max = 123.08
+tangential_accel_curve = SubResource("CurveTexture_n6hk6")
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 0.01
+scale_max = 0.05
+scale_curve = SubResource("CurveTexture_ea0a3")
+color_ramp = SubResource("GradientTexture1D_6rwql")
+turbulence_enabled = true
+turbulence_influence_min = 0.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b4i7e"]
+resource_local_to_scene = true
+emission_shape = 1
+emission_sphere_radius = 0.5
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.5
+angular_velocity_min = -443.08
+angular_velocity_max = 123.08
+tangential_accel_curve = SubResource("CurveTexture_n6hk6")
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 0.01
+scale_max = 0.05
+scale_curve = SubResource("CurveTexture_ea0a3")
+color_ramp = SubResource("GradientTexture1D_6rwql")
+turbulence_enabled = true
+turbulence_influence_min = 0.0
+
+[sub_resource type="Animation" id="Animation_5qcv4"]
+resource_name = "Crystal_rotation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ruin_statue001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ruin_statue002:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ruin_statue003:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vjpph"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ruin_statue001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ruin_statue002:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 6.28319, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ruin_statue003:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tri21"]
+_data = {
+"Crystal_rotation": SubResource("Animation_5qcv4"),
+"RESET": SubResource("Animation_vjpph")
+}
+
+[node name="ruin_statue" instance=ExtResource("1_mxggy")]
+
+[node name="ruin_statue002" parent="." index="2"]
+transform = Transform3D(1, 0, 4.46638e-06, 0, 1, 0, -4.46638e-06, 0, 1, 0.816817, 2.69063, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85726, 0.141347)
+shape = SubResource("BoxShape3D_sbqat")
+
+[node name="GPUParticles3D" parent="." index="5" instance=ExtResource("1_lmu15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806553, 2.69269, 0)
+process_material = SubResource("ParticleProcessMaterial_56ldg")
+
+[node name="GPUParticles3D2" parent="." index="6" instance=ExtResource("1_lmu15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.831085, 2.69269, 0)
+process_material = SubResource("ParticleProcessMaterial_b4i7e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+autoplay = "Crystal_rotation"
+libraries = {
+"": SubResource("AnimationLibrary_tri21")
+}

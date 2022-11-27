@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://chxycsp754fpi"]
+
+[ext_resource type="PackedScene" uid="uid://dm36jaovsmw7n" path="res://GLTF/Heavy_sword.glb" id="1_pc41k"]
+
+[node name="Heavy_sword" instance=ExtResource("1_pc41k")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
