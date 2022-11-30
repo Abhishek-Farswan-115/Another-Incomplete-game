@@ -11,7 +11,6 @@ enum {
 	IDLE,
 	ALERT,
 }
-
 var state = IDLE
 
 func _physics_process(_delta):
