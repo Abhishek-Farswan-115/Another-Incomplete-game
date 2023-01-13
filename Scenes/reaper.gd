@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var eyes = $Eyes
+@onready var Anim = $AnimationPlayer
 
 var Target
 @export var SPEED = 3
@@ -9,7 +10,8 @@ var Target
 
 enum {
 	IDLE,
-	ALERT,
+	WALK,
+	ATTACK,
 }
 var state = IDLE
 
@@ -30,7 +32,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 
 func _on_range_body_entered(body):
 	if body.is_in_group("Player"):
-		state = ALERT
+		state = WALK
 		Target = body
 
 
@@ -40,7 +42,9 @@ func _on_range_body_exited(_body):
 func _process(_delta):
 	match state:
 		IDLE:
+			Anim.play("Idle")
 			pass
-		ALERT:
+		WALK:
 			eyes.look_at(Target.global_transform.origin, Vector3.UP)
 			rotate_y(deg_to_rad(eyes.rotation.y * Turn_speed))
+			Anim.play("Walk")
