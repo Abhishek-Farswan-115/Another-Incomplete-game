@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://big1l1g4pnjwp"]
+[gd_scene load_steps=21 format=3 uid="uid://big1l1g4pnjwp"]
 
 [ext_resource type="PackedScene" uid="uid://bflbbb2wj2uvt" path="res://Scenes/particles_3d.tscn" id="1_lmu15"]
 [ext_resource type="PackedScene" uid="uid://q8hv71ja8aeq" path="res://GLTF/ruin_statue.glb" id="1_mxggy"]
@@ -10,14 +10,14 @@ size = Vector3(2.00031, 3.62386, 2.08214)
 offsets = PackedFloat32Array(0, 0.260638, 1)
 colors = PackedColorArray(0, 1, 0.472009, 1, 0, 0.800781, 0.331998, 1, 0.0598869, 0, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6rwql"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rcktt"]
 gradient = SubResource("Gradient_3bflr")
 
 [sub_resource type="Curve" id="Curve_3q4bq"]
 _data = [Vector2(0, 0.245455), 0.0, 0.0, 0, 0, Vector2(0.194313, 1), 0.0, 0.0, 0, 0, Vector2(0.635071, 0.781818), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_ea0a3"]
+[sub_resource type="CurveTexture" id="CurveTexture_x4nrs"]
 curve = SubResource("Curve_3q4bq")
 
 [sub_resource type="Curve" id="Curve_wgcgw"]
@@ -26,10 +26,10 @@ max_value = 200.0
 _data = [Vector2(0, -40), 0.0, 0.0, 0, 0, Vector2(0.21327, 10.9091), 0.0, 0.0, 0, 0, Vector2(0.748815, 0), 0.0, 0.0, 0, 0, Vector2(1, 200), 1381.09, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_n6hk6"]
+[sub_resource type="CurveTexture" id="CurveTexture_npv62"]
 curve = SubResource("Curve_wgcgw")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_56ldg"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qrbre"]
 resource_local_to_scene = true
 emission_shape = 1
 emission_sphere_radius = 0.5
@@ -39,17 +39,40 @@ initial_velocity_min = 0.1
 initial_velocity_max = 0.5
 angular_velocity_min = -443.08
 angular_velocity_max = 123.08
-tangential_accel_curve = SubResource("CurveTexture_n6hk6")
+tangential_accel_curve = SubResource("CurveTexture_npv62")
 angle_min = -720.0
 angle_max = 720.0
 scale_min = 0.01
 scale_max = 0.05
-scale_curve = SubResource("CurveTexture_ea0a3")
-color_ramp = SubResource("GradientTexture1D_6rwql")
+scale_curve = SubResource("CurveTexture_x4nrs")
+color_ramp = SubResource("GradientTexture1D_rcktt")
 turbulence_enabled = true
 turbulence_influence_min = 0.0
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_b4i7e"]
+[sub_resource type="Gradient" id="Gradient_c4u4e"]
+offsets = PackedFloat32Array(0, 0.260638, 1)
+colors = PackedColorArray(0, 1, 0.472009, 1, 0, 0.800781, 0.331998, 1, 0.0598869, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6rwql"]
+gradient = SubResource("Gradient_c4u4e")
+
+[sub_resource type="Curve" id="Curve_84a5p"]
+_data = [Vector2(0, 0.245455), 0.0, 0.0, 0, 0, Vector2(0.194313, 1), 0.0, 0.0, 0, 0, Vector2(0.635071, 0.781818), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ea0a3"]
+curve = SubResource("Curve_84a5p")
+
+[sub_resource type="Curve" id="Curve_p7gv1"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, -40), 0.0, 0.0, 0, 0, Vector2(0.21327, 10.9091), 0.0, 0.0, 0, 0, Vector2(0.748815, 0), 0.0, 0.0, 0, 0, Vector2(1, 200), 1381.09, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_n6hk6"]
+curve = SubResource("Curve_p7gv1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5m4rr"]
 resource_local_to_scene = true
 emission_shape = 1
 emission_sphere_radius = 0.5
@@ -168,11 +191,11 @@ shape = SubResource("BoxShape3D_sbqat")
 
 [node name="GPUParticles3D" parent="." index="5" instance=ExtResource("1_lmu15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806553, 2.69269, 0)
-process_material = SubResource("ParticleProcessMaterial_56ldg")
+process_material = SubResource("ParticleProcessMaterial_qrbre")
 
 [node name="GPUParticles3D2" parent="." index="6" instance=ExtResource("1_lmu15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.831085, 2.69269, 0)
-process_material = SubResource("ParticleProcessMaterial_b4i7e")
+process_material = SubResource("ParticleProcessMaterial_5m4rr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
 autoplay = "Crystal_rotation"

@@ -21,17 +21,17 @@ blend_point_1/pos = 1.0
 script = ExtResource("2_psigd")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(0, 0.0381009, 0)
+bones/0/position = Vector3(0, -0.20308, 0)
 bones/0/rotation = Quaternion(-0.210252, 0, 4.66853e-17, 0.977647)
 bones/1/position = Vector3(0.288188, 0.42231, 0.162354)
-bones/1/rotation = Quaternion(0.122767, -0.176415, -0.474386, 0.853677)
+bones/1/rotation = Quaternion(0.054141, -0.0840479, -0.510995, 0.85375)
 bones/2/position = Vector3(0.189802, 0.172974, 0.162354)
-bones/2/rotation = Quaternion(0.196392, -0.0873176, -0.847964, 0.484523)
+bones/2/rotation = Quaternion(0.0898694, -0.0438612, -0.879312, 0.465628)
 bones/3/position = Vector3(-0.288188, 0.42231, 0.162354)
-bones/3/rotation = Quaternion(0.122767, 0.176415, 0.474386, 0.853677)
+bones/3/rotation = Quaternion(0.054141, 0.0840479, 0.510995, 0.85375)
 bones/4/position = Vector3(-0.189802, 0.172974, 0.162354)
-bones/4/rotation = Quaternion(0.196392, 0.0873176, 0.847964, 0.484523)
-bones/5/rotation = Quaternion(-4.73862e-10, 1.35811e-07, -0.959557, 0.281514)
+bones/4/rotation = Quaternion(0.0898694, 0.0438612, 0.879312, 0.465628)
+bones/5/rotation = Quaternion(3.27985e-11, -3.74665e-08, 0.282326, 0.959319)
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeBlendSpace1D_nfi81")
