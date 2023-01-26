@@ -79,6 +79,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_05406")
 
 [node name="Flower3" instance=ExtResource("1_ofgms")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="Type_1_Flower_2_LOD0" parent="." index="0"]
 mesh = SubResource("ArrayMesh_tv1vy")

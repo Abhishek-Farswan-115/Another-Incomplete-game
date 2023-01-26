@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://cv2fwu4sgxy6m" path="res://Scenes/Grass And Foilage/Red_flower.tres" id="4_pwar5"]
 
 [node name="Flower2" instance=ExtResource("1_mcbyp")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="Type_2_Flower_1_LOD0" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_qxbo7")
