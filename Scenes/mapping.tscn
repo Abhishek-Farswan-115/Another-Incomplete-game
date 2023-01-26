@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2mwvhncvpt6q"]
+
+[sub_resource type="MeshLibrary" id="MeshLibrary_hwbdr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fsjfi"]
+
+[node name="Mapping" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = SubResource("MeshLibrary_hwbdr")
+physics_material = SubResource("PhysicsMaterial_fsjfi")

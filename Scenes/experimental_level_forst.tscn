@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://csgb6ri8qmw4"]
+
+[ext_resource type="PackedScene" uid="uid://trel7356gow6" path="res://GLTF/Tree_stylized.glb" id="1_u56og"]
+
+[node name="Experimental_level_forst" type="Node3D"]
+
+[node name="Tree_stylized" parent="." instance=ExtResource("1_u56og")]
