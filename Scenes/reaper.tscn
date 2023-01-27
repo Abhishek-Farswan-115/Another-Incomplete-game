@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://h7mg7478vn03"]
+[gd_scene load_steps=7 format=3 uid="uid://h7mg7478vn03"]
 
 [ext_resource type="PackedScene" uid="uid://3rr0aarju4iy" path="res://GLTF/Enemy/Reaper_enemy.glb" id="1_mvk8v"]
 [ext_resource type="Script" path="res://Scenes/reaper.gd" id="2_s8avo"]
@@ -11,7 +11,11 @@ height = 3.65339
 [sub_resource type="SphereShape3D" id="SphereShape3D_snlt0"]
 radius = 18.057
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_us665"]
+radius = 2.69992
+
 [node name="Reaper" groups=["Enemy"] instance=ExtResource("1_mvk8v")]
+collision_layer = 4
 script = ExtResource("2_s8avo")
 SPEED = 7
 
@@ -19,17 +23,16 @@ SPEED = 7
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Rig" index="0"]
-bones/2/rotation = Quaternion(-0.119151, 4.25057e-19, 9.2897e-18, 0.992876)
 bones/7/rotation = Quaternion(-0.61041, -0.336459, -0.367672, 0.61564)
-bones/8/rotation = Quaternion(0.29261, 0.460686, -0.731554, 0.408628)
+bones/8/rotation = Quaternion(0.269437, 0.497761, -0.730927, 0.381293)
 bones/9/rotation = Quaternion(0.500224, 0.325005, 0.00561802, 0.802568)
 bones/10/rotation = Quaternion(-0.0926941, -0.551927, -0.11024, 0.82136)
 bones/12/rotation = Quaternion(0.419477, -0.632483, 0.314054, 0.570416)
-bones/13/rotation = Quaternion(0.61139, 0.0691469, -0.0903896, 0.783103)
+bones/13/rotation = Quaternion(0.618655, 0.0523393, -0.0421836, 0.782781)
 bones/14/rotation = Quaternion(0.292556, 0.73488, 0.0398339, 0.610554)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Rig/Skeleton3D" index="1"]
-transform = Transform3D(-0.671168, 0.693416, -0.26212, 0.129213, 0.45761, 0.879715, 0.729957, 0.556567, -0.396731, -0.449805, 2.79017, 0.512212)
+transform = Transform3D(-0.671168, 0.693417, -0.262119, -0.00869665, 0.346202, 0.93812, 0.741254, 0.631916, -0.226329, -0.449805, 2.70037, 0.563746)
 bone_name = "hand.R"
 bone_idx = 14
 
@@ -48,16 +51,31 @@ avoidance_enabled = true
 [node name="RayCast3D" type="RayCast3D" parent="." index="3"]
 
 [node name="Range" type="Area3D" parent="." index="4"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Range" index="0"]
 shape = SubResource("SphereShape3D_snlt0")
 
-[node name="Eyes" type="Node3D" parent="." index="5"]
+[node name="AttackRange" type="Area3D" parent="." index="5"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954137, 0)
+shape = SubResource("SphereShape3D_us665")
+
+[node name="Eyes" type="Node3D" parent="." index="6"]
 transform = Transform3D(-0.315881, 0, 0.948799, 0, 1, 0, -0.948799, 0, -0.315881, 0, 0, 0)
 
-[node name="AnimationPlayer" parent="." index="6"]
+[node name="AnimationPlayer" parent="." index="7"]
 autoplay = "Idle"
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
