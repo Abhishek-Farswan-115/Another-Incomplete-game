@@ -1,7 +1,51 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfir3v2gcpnqp"]
+[gd_scene load_steps=15 format=3 uid="uid://cfir3v2gcpnqp"]
 
 [ext_resource type="PackedScene" uid="uid://dro5yvil826la" path="res://GLTF/Friendly_crystal.glb" id="1_bq8rq"]
 [ext_resource type="Script" path="res://Scripts/friendly_crystal.gd" id="2_psigd"]
+[ext_resource type="PackedScene" uid="uid://bflbbb2wj2uvt" path="res://Scenes/particles_3d.tscn" id="3_0ib0h"]
+
+[sub_resource type="Gradient" id="Gradient_3bflr"]
+offsets = PackedFloat32Array(0, 0.260638, 1)
+colors = PackedColorArray(0, 1, 0.472009, 1, 0, 0.800781, 0.331998, 1, 0.0598869, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6rwql"]
+gradient = SubResource("Gradient_3bflr")
+
+[sub_resource type="Curve" id="Curve_3q4bq"]
+_data = [Vector2(0, 0.245455), 0.0, 0.0, 0, 0, Vector2(0.194313, 1), 0.0, 0.0, 0, 0, Vector2(0.635071, 0.781818), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ea0a3"]
+curve = SubResource("Curve_3q4bq")
+
+[sub_resource type="Curve" id="Curve_wgcgw"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, -40), 0.0, 0.0, 0, 0, Vector2(0.21327, 10.9091), 0.0, 0.0, 0, 0, Vector2(0.748815, 0), 0.0, 0.0, 0, 0, Vector2(1, 200), 1381.09, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_n6hk6"]
+curve = SubResource("Curve_wgcgw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8d435"]
+resource_local_to_scene = true
+emission_shape = 1
+emission_sphere_radius = 0.5
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.5
+angular_velocity_min = -443.08
+angular_velocity_max = 123.08
+tangential_accel_curve = SubResource("CurveTexture_n6hk6")
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 0.01
+scale_max = 0.05
+scale_curve = SubResource("CurveTexture_ea0a3")
+color_ramp = SubResource("GradientTexture1D_6rwql")
+turbulence_enabled = true
+turbulence_influence_min = 0.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3jftg"]
 animation = &"IDLE"
@@ -21,17 +65,26 @@ blend_point_1/pos = 1.0
 script = ExtResource("2_psigd")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(0, -0.376543, 0)
+bones/0/position = Vector3(0, -0.342331, 0)
 bones/0/rotation = Quaternion(-0.210252, 0, 4.66853e-17, 0.977647)
 bones/1/position = Vector3(0.288188, 0.42231, 0.162354)
-bones/1/rotation = Quaternion(0.126394, -0.188781, -0.481515, 0.84648)
+bones/1/rotation = Quaternion(0.104982, -0.161897, -0.496353, 0.846405)
 bones/2/position = Vector3(0.189802, 0.172974, 0.162354)
-bones/2/rotation = Quaternion(0.2059, -0.0960168, -0.850335, 0.474674)
+bones/2/rotation = Quaternion(0.173659, -0.0841101, -0.862989, 0.466925)
 bones/3/position = Vector3(-0.288188, 0.42231, 0.162354)
-bones/3/rotation = Quaternion(0.126394, 0.188781, 0.481515, 0.84648)
+bones/3/rotation = Quaternion(0.104982, 0.161897, 0.496353, 0.846405)
 bones/4/position = Vector3(-0.189802, 0.172974, 0.162354)
-bones/4/rotation = Quaternion(0.2059, 0.0960168, 0.850335, 0.474674)
-bones/5/rotation = Quaternion(6.1525e-09, -1.10384e-07, 0.795412, 0.606069)
+bones/4/rotation = Quaternion(0.173659, 0.0841101, 0.862989, 0.466925)
+bones/5/rotation = Quaternion(9.10808e-09, -8.41383e-08, 0.574549, 0.81847)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, -9.12834e-17, -1.96313e-17, 9.12834e-17, 0.911588, 0.411104, -1.96313e-17, -0.411104, 0.911588, 0, -0.342331, 0)
+bone_name = "root"
+bone_idx = 0
+
+[node name="GPUParticles3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="0" instance=ExtResource("3_0ib0h")]
+transform = Transform3D(1, -8.27181e-25, 0, -1.65436e-24, 1, 0, 0, 0, 1, 2.53046e-17, 0.2527, 0.113962)
+process_material = SubResource("ParticleProcessMaterial_8d435")
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeBlendSpace1D_nfi81")
