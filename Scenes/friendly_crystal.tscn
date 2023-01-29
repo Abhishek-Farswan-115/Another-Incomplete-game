@@ -65,20 +65,20 @@ blend_point_1/pos = 1.0
 script = ExtResource("2_psigd")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(0, -0.342331, 0)
+bones/0/position = Vector3(0, -0.0457679, 0)
 bones/0/rotation = Quaternion(-0.210252, 0, 4.66853e-17, 0.977647)
 bones/1/position = Vector3(0.288188, 0.42231, 0.162354)
-bones/1/rotation = Quaternion(0.104982, -0.161897, -0.496353, 0.846405)
+bones/1/rotation = Quaternion(0.00434052, -0.00712828, -0.519994, 0.854129)
 bones/2/position = Vector3(0.189802, 0.172974, 0.162354)
-bones/2/rotation = Quaternion(0.173659, -0.0841101, -0.862989, 0.466925)
+bones/2/rotation = Quaternion(0.0074053, -0.00384947, -0.887212, 0.461287)
 bones/3/position = Vector3(-0.288188, 0.42231, 0.162354)
-bones/3/rotation = Quaternion(0.104982, 0.161897, 0.496353, 0.846405)
+bones/3/rotation = Quaternion(0.00434052, 0.00712828, 0.519994, 0.854129)
 bones/4/position = Vector3(-0.189802, 0.172974, 0.162354)
-bones/4/rotation = Quaternion(0.173659, 0.0841101, 0.862989, 0.466925)
-bones/5/rotation = Quaternion(9.10808e-09, -8.41383e-08, 0.574549, 0.81847)
+bones/4/rotation = Quaternion(0.0074053, 0.00384947, 0.887212, 0.461287)
+bones/5/rotation = Quaternion(2.48166e-09, 1.93032e-09, -0.0125722, 0.999921)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, -9.12834e-17, -1.96313e-17, 9.12834e-17, 0.911588, 0.411104, -1.96313e-17, -0.411104, 0.911588, 0, -0.342331, 0)
+transform = Transform3D(1, -9.12834e-17, -1.96313e-17, 9.12834e-17, 0.911588, 0.411104, -1.96313e-17, -0.411104, 0.911588, 0, -0.0457679, 0)
 bone_name = "root"
 bone_idx = 0
 
