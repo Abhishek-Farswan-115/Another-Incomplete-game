@@ -1,5 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://chxycsp754fpi"]
+[gd_scene load_steps=3 format=3 uid="uid://chxycsp754fpi"]
 
 [ext_resource type="PackedScene" uid="uid://dm36jaovsmw7n" path="res://GLTF/Heavy_sword.glb" id="1_pc41k"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bp3qh"]
+radius = 0.260698
+height = 1.86542
+
 [node name="Heavy_sword" instance=ExtResource("1_pc41k")]
+
+[node name="HitBox" type="Area3D" parent="." index="1"]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.922605, 0)
+shape = SubResource("CapsuleShape3D_bp3qh")
