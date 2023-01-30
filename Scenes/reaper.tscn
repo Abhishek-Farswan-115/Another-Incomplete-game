@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://h7mg7478vn03"]
+[gd_scene load_steps=12 format=3 uid="uid://h7mg7478vn03"]
 
 [ext_resource type="PackedScene" uid="uid://3rr0aarju4iy" path="res://GLTF/Enemy/Reaper_enemy.glb" id="1_mvk8v"]
 [ext_resource type="Script" path="res://Scenes/reaper.gd" id="2_s8avo"]
 [ext_resource type="PackedScene" uid="uid://bm7w3e6r62nyl" path="res://GLTF/Grim_weapon.glb" id="3_t1sn1"]
+[ext_resource type="Texture2D" uid="uid://clqc5k4lxnpvc" path="res://Scenes/UI/barHorizontal_green_mid 200.png" id="4_hegqg"]
+[ext_resource type="Script" path="res://Scripts/Player_health.gd" id="5_wg4w0"]
+[ext_resource type="PackedScene" uid="uid://dq825hx5gai2v" path="res://Scenes/UI/enemy_health_bar.tscn" id="6_rpitj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rrpxq"]
 size = Vector3(1.48063, 0.508586, 0.106154)
@@ -15,7 +18,7 @@ height = 3.65339
 radius = 18.057
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_us665"]
-radius = 2.31489
+radius = 1.93521
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dktj"]
 radius = 0.977254
@@ -104,6 +107,18 @@ autoplay = "Idle"
 [node name="IFrameTimer" type="Timer" parent="." index="9"]
 wait_time = 0.1
 one_shot = true
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.89093, 0)
+billboard = 1
+texture = ExtResource("4_hegqg")
+script = ExtResource("5_wg4w0")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" index="0"]
+transparent_bg = true
+size = Vector2i(200, 26)
+
+[node name="EnemyHealthBar" parent="Sprite3D/SubViewport" index="0" instance=ExtResource("6_rpitj")]
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
