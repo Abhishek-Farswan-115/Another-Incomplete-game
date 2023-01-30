@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://h7mg7478vn03"]
+[gd_scene load_steps=9 format=3 uid="uid://h7mg7478vn03"]
 
 [ext_resource type="PackedScene" uid="uid://3rr0aarju4iy" path="res://GLTF/Enemy/Reaper_enemy.glb" id="1_mvk8v"]
 [ext_resource type="Script" path="res://Scenes/reaper.gd" id="2_s8avo"]
 [ext_resource type="PackedScene" uid="uid://bm7w3e6r62nyl" path="res://GLTF/Grim_weapon.glb" id="3_t1sn1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rrpxq"]
+size = Vector3(1.48063, 0.508586, 0.106154)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e0071"]
 radius = 0.821949
@@ -12,7 +15,11 @@ height = 3.65339
 radius = 18.057
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_us665"]
-radius = 2.69992
+radius = 2.31489
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dktj"]
+radius = 0.977254
+height = 4.21337
 
 [node name="Reaper" groups=["Enemy"] instance=ExtResource("1_mvk8v")]
 collision_layer = 4
@@ -39,8 +46,18 @@ bone_idx = 14
 [node name="Grim_weapon" parent="Rig/Skeleton3D/BoneAttachment3D" index="0" instance=ExtResource("3_t1sn1")]
 transform = Transform3D(0.69777, 0.341505, 0.629675, 0.688205, -0.0757444, -0.721551, -0.198718, 0.936822, -0.287878, -0.386635, 0.264937, -0.999578)
 
+[node name="Area3D" type="Area3D" parent="Rig/Skeleton3D/BoneAttachment3D/Grim_weapon" index="2"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rig/Skeleton3D/BoneAttachment3D/Grim_weapon/Area3D" index="0"]
+transform = Transform3D(1, -5.07571e-08, 0, -5.12227e-08, 1, -1.68802e-08, -2.6077e-07, -1.12341e-08, 1, 0.486238, 2.09062, -0.0124017)
+shape = SubResource("BoxShape3D_rrpxq")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74867, 0)
+visible = false
 shape = SubResource("CapsuleShape3D_e0071")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]
@@ -51,6 +68,7 @@ avoidance_enabled = true
 [node name="RayCast3D" type="RayCast3D" parent="." index="3"]
 
 [node name="Range" type="Area3D" parent="." index="4"]
+visible = false
 collision_layer = 0
 collision_mask = 2
 monitorable = false
@@ -64,18 +82,36 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954137, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62082, 0)
 shape = SubResource("SphereShape3D_us665")
 
-[node name="Eyes" type="Node3D" parent="." index="6"]
+[node name="HurtBox" type="Area3D" parent="." index="6"]
+visible = false
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49678, 0)
+shape = SubResource("CapsuleShape3D_2dktj")
+
+[node name="Eyes" type="Node3D" parent="." index="7"]
 transform = Transform3D(-0.315881, 0, 0.948799, 0, 1, 0, -0.948799, 0, -0.315881, 0, 0, 0)
 
-[node name="AnimationPlayer" parent="." index="7"]
+[node name="AnimationPlayer" parent="." index="8"]
 autoplay = "Idle"
+
+[node name="IFrameTimer" type="Timer" parent="." index="9"]
+wait_time = 0.1
+one_shot = true
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="IFrameTimer" to="." method="_on_i_frame_timer_timeout"]
+
+[editable path="Rig/Skeleton3D/BoneAttachment3D/Grim_weapon"]
