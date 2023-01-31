@@ -202,6 +202,7 @@ size = Vector2i(200, 26)
 [node name="EnemyHealthBar" parent="Sprite3D/SubViewport" index="0" instance=ExtResource("6_rpitj")]
 
 [node name="Effectors" parent="." index="11" instance=ExtResource("7_w2p36")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Birth_Effect" parent="Effectors" index="0"]
 process_material = SubResource("ParticleProcessMaterial_agcp7")

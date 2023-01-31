@@ -35,7 +35,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_k5nuk")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_6ty21"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ssigb"]
 height = 4.9164
 radius = 0.404659
 
@@ -45,6 +45,8 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 [node name="Broadleaf_Tree 3_Leaves_LOD0" parent="Birch _Tree_3_LOD0" index="0"]
 mesh = SubResource("ArrayMesh_gjyit")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Birch _Tree_3_LOD0" index="1"]
-transform = Transform3D(1.97295, 4.1159e-07, 90.5953, -90.5953, -1.88997e-05, 1.97295, 2.15408e-05, -90.6168, -3.17034e-06, 1.01994e-06, -4.68344e-05, -224.554)
-shape = SubResource("CylinderShape3D_6ty21")
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 1.86264e-09, 0, 1, 0, 1.86265e-09, 4.44089e-16, 1, 0, 2.47806, 0)
+shape = SubResource("CylinderShape3D_ssigb")
