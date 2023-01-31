@@ -6,6 +6,7 @@
 
 [node name="Loading Scene" type="Node2D"]
 script = ExtResource("1_hqsea")
+game_scene_path = "res://Scenes/land.tscn"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -42,4 +43,3 @@ offset_right = 896.0
 offset_bottom = 387.0
 theme_override_colors/font_color = Color(0.803922, 0.392157, 0.341176, 1)
 theme_override_fonts/font = ExtResource("2_nqdxk")
-value = 50.0

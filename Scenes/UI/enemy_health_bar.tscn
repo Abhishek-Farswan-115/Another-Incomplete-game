@@ -9,3 +9,5 @@ offset_bottom = 26.0
 value = 100.0
 texture_progress = ExtResource("1_qc7cn")
 script = ExtResource("2_fbc4g")
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

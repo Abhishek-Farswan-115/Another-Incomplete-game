@@ -1,23 +1,35 @@
 extends CharacterBody3D
 
-@onready var nav_agent = $NavigationAgent3D
-@onready var eyes = $Eyes
-@onready var Anim = $AnimationPlayer
-@onready var i_frame_timer: Timer = $IFrameTimer
-@onready var hurt_box_collision_shape: CollisionShape3D = $HurtBox/CollisionShape3D
-
-@export var SPEED = 3
-@export var Turn_speed = 2
-
 enum {
 	IDLE,
 	WALK,
 	ATTACK,
 }
+
+@onready var nav_agent = $NavigationAgent3D
+@onready var eyes = $Eyes
+@onready var Anim = $AnimationPlayer
+@onready var i_frame_timer: Timer = $IFrameTimer
+@onready var hurt_box_collision_shape: CollisionShape3D = $HurtBox/CollisionShape3D
+@onready var enemy_health_bar: TextureProgressBar = $Sprite3D/SubViewport/EnemyHealthBar
+
+@export var SPEED = 3
+@export var Turn_speed = 2
+@export var max_health: = 100.0
+@export var knock_back: = 20.0
+
 var state = IDLE
 var Target = null
 var target_in_attack_range: = false
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+var health: = max_health:
+	set(value):
+		health = value
+		enemy_health_bar.value = health
+
+
+func _ready() -> void:
+	enemy_health_bar.max_value = max_health
 
 
 func _process(_delta):
@@ -27,6 +39,7 @@ func _process(_delta):
 			rotate_y(deg_to_rad(eyes.rotation.y * Turn_speed))
 		ATTACK:
 			Anim.play("Attack")
+
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -82,7 +95,13 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_hurt_box_area_entered(area: Area3D) -> void:
-	velocity += area.owner.global_position.direction_to(global_position) * 100
+	var node: Node3D = area.owner
+	if "knock_back" in node:
+		velocity += node.global_position.direction_to(global_position) * node.knock_back
+	if "damage" in node:
+		health -= node.damage
+		if health <= 0:
+			queue_free()
 	i_frame_timer.start()
 	hurt_box_collision_shape.set_deferred("disabled", true)
 
