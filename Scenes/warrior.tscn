@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://rxsvnbwdeuqf"]
 
-[ext_resource type="PackedScene" uid="uid://c1nesg0m34mh0" path="res://GLTF/Warrior.glb" id="1_8vmdt"]
+[ext_resource type="PackedScene" uid="uid://c1nesg0m34mh0" path="res://GLTF/warrior.glb" id="1_8vmdt"]
 [ext_resource type="PackedScene" uid="uid://chxycsp754fpi" path="res://Scenes/heavy_sword.tscn" id="2_y88qg"]
 
 [sub_resource type="GDScript" id="GDScript_kyy2f"]
@@ -5060,7 +5060,7 @@ bones/111/position = Vector3(-1.00753, 0.700854, -0.0819505)
 bones/111/rotation = Quaternion(-0.707107, 5.7357e-08, 1.63329e-08, 0.707107)
 
 [node name="Armature@Skeleton3D@BoneAttachment3D" type="BoneAttachment3D" parent="Armature001/Skeleton3D" index="0"]
-transform = Transform3D(-0.0612278, -0.237202, 0.969529, 0.294912, -0.932283, -0.209466, 0.953561, 0.2731, 0.127035, -0.573931, 1.70687, -0.392764)
+transform = Transform3D(-0.0612294, -0.237202, 0.969529, 0.294912, -0.932283, -0.209465, 0.953561, 0.2731, 0.127037, -0.573929, 1.70687, -0.392764)
 bone_name = "mixamorig_RightHand"
 bone_idx = 21
 
