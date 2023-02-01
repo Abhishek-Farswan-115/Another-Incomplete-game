@@ -13,10 +13,12 @@ enum {
 @onready var hurt_box_collision_shape: CollisionShape3D = $HurtBox/CollisionShape3D
 @onready var enemy_health_bar: TextureProgressBar = $Sprite3D/SubViewport/EnemyHealthBar
 
+@export var death_effect: PackedScene
 @export var SPEED = 3
 @export var Turn_speed = 2
 @export var max_health: = 100.0
 @export var knock_back: = 20.0
+@export var points: = 20
 
 var state = IDLE
 var Target = null
@@ -101,10 +103,18 @@ func _on_hurt_box_area_entered(area: Area3D) -> void:
 	if "damage" in node:
 		health -= node.damage
 		if health <= 0:
-			queue_free()
+			die()
 	i_frame_timer.start()
 	hurt_box_collision_shape.set_deferred("disabled", true)
 
 
 func _on_i_frame_timer_timeout() -> void:
 	hurt_box_collision_shape.disabled = false
+
+
+func die() -> void:
+	var de: GPUParticles3D = death_effect.instantiate()
+	get_tree().root.add_child(de)
+	de.global_position = global_position
+	Global.add_point(points)
+	queue_free()
