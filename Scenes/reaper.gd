@@ -14,6 +14,7 @@ enum {
 @onready var enemy_health_bar: TextureProgressBar = $Sprite3D/SubViewport/EnemyHealthBar
 
 @export var death_effect: PackedScene
+@export var spawn_effect: PackedScene
 @export var SPEED = 3
 @export var Turn_speed = 2
 @export var max_health: = 100.0
@@ -32,6 +33,7 @@ var health: = max_health:
 
 func _ready() -> void:
 	enemy_health_bar.max_value = max_health
+	add_child(spawn_effect.instantiate())
 
 
 func _process(_delta):
