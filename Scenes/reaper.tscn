@@ -1,27 +1,28 @@
-[gd_scene load_steps=13 format=3 uid="uid://h7mg7478vn03"]
+[gd_scene load_steps=14 format=3 uid="uid://h7mg7478vn03"]
 
 [ext_resource type="PackedScene" uid="uid://3rr0aarju4iy" path="res://GLTF/Enemy/Reaper_enemy.glb" id="1_mvk8v"]
 [ext_resource type="Script" path="res://Scenes/reaper.gd" id="2_s8avo"]
 [ext_resource type="PackedScene" uid="uid://cittbpbme7qr3" path="res://Scenes/vfx/death_effect.tscn" id="3_r5f8r"]
 [ext_resource type="PackedScene" uid="uid://bm7w3e6r62nyl" path="res://GLTF/Grim_weapon.glb" id="3_t1sn1"]
+[ext_resource type="PackedScene" uid="uid://l2l57pmt3wlg" path="res://Scenes/vfx/birth_effect.tscn" id="4_8e5ho"]
 [ext_resource type="Texture2D" uid="uid://clqc5k4lxnpvc" path="res://Scenes/UI/barHorizontal_green_mid 200.png" id="4_hegqg"]
 [ext_resource type="Script" path="res://Scripts/Player_health.gd" id="5_wg4w0"]
 [ext_resource type="PackedScene" uid="uid://dq825hx5gai2v" path="res://Scenes/UI/enemy_health_bar.tscn" id="6_rpitj"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rrpxq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_bl4i5"]
 size = Vector3(1.48063, 0.508586, 0.106154)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e0071"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uelkd"]
 radius = 0.821949
 height = 3.65339
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_snlt0"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_70k23"]
 radius = 18.057
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_us665"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_gh2wp"]
 radius = 1.93521
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2dktj"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i2peg"]
 radius = 0.977254
 height = 4.21337
 
@@ -29,6 +30,7 @@ height = 4.21337
 collision_layer = 4
 script = ExtResource("2_s8avo")
 death_effect = ExtResource("3_r5f8r")
+spawn_effect = ExtResource("4_8e5ho")
 SPEED = 7
 
 [node name="Rig" parent="." index="0"]
@@ -58,12 +60,12 @@ monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rig/Skeleton3D/BoneAttachment3D/Grim_weapon/Area3D" index="0"]
 transform = Transform3D(1, -5.07571e-08, 0, -5.12227e-08, 1, -1.68802e-08, -2.6077e-07, -1.12341e-08, 1, 0.486238, 2.09062, -0.0124017)
-shape = SubResource("BoxShape3D_rrpxq")
+shape = SubResource("BoxShape3D_bl4i5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74867, 0)
 visible = false
-shape = SubResource("CapsuleShape3D_e0071")
+shape = SubResource("CapsuleShape3D_uelkd")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]
 target_desired_distance = 2.0
@@ -79,7 +81,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Range" index="0"]
-shape = SubResource("SphereShape3D_snlt0")
+shape = SubResource("SphereShape3D_70k23")
 
 [node name="AttackRange" type="Area3D" parent="." index="5"]
 collision_layer = 0
@@ -88,7 +90,7 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62082, 0)
-shape = SubResource("SphereShape3D_us665")
+shape = SubResource("SphereShape3D_gh2wp")
 
 [node name="HurtBox" type="Area3D" parent="." index="6"]
 visible = false
@@ -98,7 +100,7 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49678, 0)
-shape = SubResource("CapsuleShape3D_2dktj")
+shape = SubResource("CapsuleShape3D_i2peg")
 
 [node name="Eyes" type="Node3D" parent="." index="7"]
 transform = Transform3D(-0.315881, 0, 0.948799, 0, 1, 0, -0.948799, 0, -0.315881, 0, 0, 0)
