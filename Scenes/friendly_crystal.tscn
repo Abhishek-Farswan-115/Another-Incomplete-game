@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfir3v2gcpnqp"]
+[gd_scene load_steps=12 format=3 uid="uid://cfir3v2gcpnqp"]
 
 [ext_resource type="PackedScene" uid="uid://dro5yvil826la" path="res://GLTF/Friendly_crystal.glb" id="1_bq8rq"]
 [ext_resource type="Script" path="res://Scripts/friendly_crystal.gd" id="2_psigd"]
@@ -27,7 +27,7 @@ point_count = 4
 [sub_resource type="CurveTexture" id="CurveTexture_n6hk6"]
 curve = SubResource("Curve_wgcgw")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ilfan"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xvunu"]
 resource_local_to_scene = true
 emission_shape = 1
 emission_sphere_radius = 0.5
@@ -47,57 +47,40 @@ color_ramp = SubResource("GradientTexture1D_6rwql")
 turbulence_enabled = true
 turbulence_influence_min = 0.0
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3jftg"]
-animation = &"IDLE"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1rqco"]
-animation = &"FLY"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_nfi81"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_3jftg")
-blend_point_0/pos = -1.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_1rqco")
-blend_point_1/pos = 1.0
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_f5kfi"]
 
 [node name="friendly_crystal" groups=["Ally"] instance=ExtResource("1_bq8rq")]
 script = ExtResource("2_psigd")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(0, 0.0783843, 0)
-bones/0/rotation = Quaternion(-0.210252, 0, 4.66853e-17, 0.977647)
 bones/1/position = Vector3(0.288188, 0.42231, 0.162354)
-bones/1/rotation = Quaternion(0.0637454, -0.104588, -0.515944, 0.847821)
+bones/1/rotation = Quaternion(9.42405e-08, 3.44137e-07, -0.520013, 0.854158)
 bones/2/position = Vector3(0.189802, 0.172974, 0.162354)
-bones/2/rotation = Quaternion(0.108701, -0.0564475, -0.88048, 0.457988)
+bones/2/rotation = Quaternion(1.17929e-07, 1.9528e-07, -0.887243, 0.461302)
 bones/3/position = Vector3(-0.288188, 0.42231, 0.162354)
-bones/3/rotation = Quaternion(0.0637454, 0.104588, 0.515944, 0.847821)
+bones/3/rotation = Quaternion(9.42405e-08, -3.44137e-07, 0.520013, 0.854158)
 bones/4/position = Vector3(-0.189802, 0.172974, 0.162354)
-bones/4/rotation = Quaternion(0.108701, 0.0564475, 0.88048, 0.457988)
-bones/5/rotation = Quaternion(9.36045e-12, 3.84769e-08, -0.282554, 0.959251)
+bones/4/rotation = Quaternion(1.17929e-07, -1.9528e-07, 0.887243, 0.461302)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, -9.12835e-17, -1.96314e-17, 9.12835e-17, 0.911588, 0.411105, -1.96314e-17, -0.411105, 0.911588, 0, 0.0783843, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0817353, 0)
 bone_name = "root"
 bone_idx = 0
 
 [node name="GPUParticles3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="0" instance=ExtResource("3_0ib0h")]
 transform = Transform3D(1, -8.27181e-25, 0, -1.65436e-24, 1, 0, 0, 0, 1, 2.53046e-17, 0.2527, 0.113962)
-process_material = SubResource("ParticleProcessMaterial_ilfan")
+process_material = SubResource("ParticleProcessMaterial_xvunu")
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
-tree_root = SubResource("AnimationNodeBlendSpace1D_nfi81")
-anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/blend_position = 1.00795
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "IDLE"
 
-[node name="Follower_Nav" type="NavigationAgent3D" parent="." index="3"]
+[node name="Follower_Nav" type="NavigationAgent3D" parent="." index="2"]
 target_desired_distance = 2.0
 navigation_layers = 2
 avoidance_enabled = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
 shape = SubResource("SphereShape3D_f5kfi")
+disabled = true
 
 [connection signal="velocity_computed" from="Follower_Nav" to="." method="_on_follower_nav_velocity_computed"]
