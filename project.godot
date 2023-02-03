@@ -13,11 +13,13 @@ config_version=5
 config/name="another incomplete FPS"
 run/main_scene="res://Scenes/UI/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
+boot_splash/image="res://icon2.png"
 config/icon="res://icon.svg"
 
-[autoload]
+[display]
 
-Global="*res://Scripts/autoloads/global.gd"
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [editor_plugins]
 

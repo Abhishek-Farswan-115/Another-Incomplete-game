@@ -7,6 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://b8nr6khqhcaes" path="res://Scenes/UI/Hover_button.tres" id="4_keq1w"]
 
 [node name="Credits" type="Node2D"]
+scale = Vector2(1.113, 1.113)
 script = ExtResource("1_rt1xp")
 
 [node name="TextureRect" type="TextureRect" parent="."]

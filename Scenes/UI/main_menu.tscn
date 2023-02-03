@@ -16,6 +16,7 @@ outline_size = 3
 outline_color = Color(0, 0.764706, 1, 1)
 
 [node name="Main_Menu" type="Node2D"]
+scale = Vector2(1.113, 1.113)
 script = ExtResource("1_yte5m")
 Credit_scene = ExtResource("3_nllc0")
 loading_scene = ExtResource("3_16cyp")

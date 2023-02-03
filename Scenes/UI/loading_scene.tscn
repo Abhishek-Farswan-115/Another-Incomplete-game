@@ -9,6 +9,8 @@ script = ExtResource("1_hqsea")
 game_scene_path = "res://Scenes/land.tscn"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(1.113, 1.113)
+transform = Transform2D(1.113, 0, 0, 1.113, 0, 0)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 offset_right = 1152.0
