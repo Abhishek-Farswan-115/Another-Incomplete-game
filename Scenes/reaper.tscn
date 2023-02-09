@@ -9,20 +9,20 @@
 [ext_resource type="Script" path="res://Scripts/Player_health.gd" id="5_wg4w0"]
 [ext_resource type="PackedScene" uid="uid://dq825hx5gai2v" path="res://Scenes/UI/enemy_health_bar.tscn" id="6_rpitj"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xrl0h"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_30xsn"]
 size = Vector3(1.48063, 0.508586, 0.106154)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7acap"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mcvql"]
 radius = 0.821949
 height = 3.65339
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_rfqyc"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_vg1y1"]
 radius = 18.057
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_wcwcv"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_7qup5"]
 radius = 1.93521
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uvdsi"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f0q6v"]
 radius = 0.977254
 height = 4.21337
 
@@ -32,6 +32,7 @@ script = ExtResource("2_s8avo")
 death_effect = ExtResource("3_r5f8r")
 spawn_effect = ExtResource("4_8e5ho")
 SPEED = 7
+max_health = 40.0
 
 [node name="Rig" parent="." index="0"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -60,12 +61,12 @@ monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rig/Skeleton3D/BoneAttachment3D/Grim_weapon/Area3D" index="0"]
 transform = Transform3D(1, -5.07571e-08, 0, -5.12227e-08, 1, -1.68802e-08, -2.6077e-07, -1.12341e-08, 1, 0.486238, 2.09062, -0.0124017)
-shape = SubResource("BoxShape3D_xrl0h")
+shape = SubResource("BoxShape3D_30xsn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74867, 0)
 visible = false
-shape = SubResource("CapsuleShape3D_7acap")
+shape = SubResource("CapsuleShape3D_mcvql")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]
 target_desired_distance = 2.0
@@ -81,7 +82,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Range" index="0"]
-shape = SubResource("SphereShape3D_rfqyc")
+shape = SubResource("SphereShape3D_vg1y1")
 
 [node name="AttackRange" type="Area3D" parent="." index="5"]
 collision_layer = 0
@@ -90,7 +91,7 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62082, 0)
-shape = SubResource("SphereShape3D_wcwcv")
+shape = SubResource("SphereShape3D_7qup5")
 
 [node name="HurtBox" type="Area3D" parent="." index="6"]
 visible = false
@@ -100,7 +101,7 @@ monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49678, 0)
-shape = SubResource("CapsuleShape3D_uvdsi")
+shape = SubResource("CapsuleShape3D_f0q6v")
 
 [node name="Eyes" type="Node3D" parent="." index="7"]
 transform = Transform3D(-0.315881, 0, 0.948799, 0, 1, 0, -0.948799, 0, -0.315881, 0, 0, 0)

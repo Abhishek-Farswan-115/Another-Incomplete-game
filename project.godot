@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.0", "Forward Plus")
 boot_splash/image="res://icon2.png"
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Scripts/autoloads/global.gd"
+
 [display]
 
 window/size/viewport_width=1280
@@ -81,7 +85,7 @@ attack={
 3d_physics/layer_1="World"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Enemy"
-3d_physics/layer_4="World"
+3d_physics/layer_4="Item"
 
 [physics]
 
