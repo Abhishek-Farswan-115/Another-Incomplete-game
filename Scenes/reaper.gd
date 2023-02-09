@@ -25,7 +25,7 @@ var state = IDLE
 var Target = null
 var target_in_attack_range: = false
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-var health: = max_health:
+@onready var health: = max_health:
 	set(value):
 		health = value
 		enemy_health_bar.value = health
@@ -118,5 +118,9 @@ func die() -> void:
 	var de: GPUParticles3D = death_effect.instantiate()
 	get_tree().root.add_child(de)
 	de.global_position = global_position
-	Global.add_point(points)
+	Global.add_kill()
+	for i in points:
+		var crystal: = preload("res://Scenes/crystal.tscn").instantiate()
+		get_tree().root.add_child(crystal)
+		crystal.global_position = global_position + Vector3(0, 10, 0)
 	queue_free()
