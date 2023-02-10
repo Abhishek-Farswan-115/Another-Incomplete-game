@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/crystal.gd" id="2_s6ilt"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0lnx"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ortg"]
 resource_name = "Material"
 cull_mode = 2
 vertex_color_use_as_albedo = true
@@ -10,7 +10,7 @@ albedo_color = Color(0.37448, 0.894791, 0.906332, 1)
 metallic = 1.0
 roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_xhatn"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_peg54"]
 _surfaces = [{
 "aabb": AABB(-0.360189, 0.00873566, -0.360189, 0.720379, 1.73993, 0.720379),
 "format": 4097,
@@ -23,7 +23,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_2crao"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_8e884"]
 resource_name = "Crystal_Cube"
 _surfaces = [{
 "aabb": AABB(-0.360189, 0.00873566, -0.360189, 0.720379, 1.73993, 0.720379),
@@ -31,16 +31,16 @@ _surfaces = [{
 "format": 4119,
 "index_count": 24,
 "index_data": PackedByteArray(10, 0, 12, 0, 7, 0, 15, 0, 17, 0, 6, 0, 19, 0, 23, 0, 5, 0, 21, 0, 9, 0, 4, 0, 0, 0, 8, 0, 20, 0, 1, 0, 22, 0, 18, 0, 2, 0, 16, 0, 14, 0, 3, 0, 13, 0, 11, 0),
-"material": SubResource("StandardMaterial3D_n0lnx"),
+"material": SubResource("StandardMaterial3D_4ortg"),
 "name": "Material",
 "primitive": 3,
 "vertex_count": 24,
 "vertex_data": PackedByteArray(0, 0, 0, 0, 0, 32, 15, 60, 0, 0, 0, 128, 255, 127, 133, 90, 252, 156, 1, 227, 0, 0, 0, 0, 0, 32, 15, 60, 0, 0, 0, 128, 132, 218, 133, 90, 250, 185, 128, 241, 0, 0, 0, 0, 0, 32, 15, 60, 0, 0, 0, 128, 132, 218, 0, 0, 4, 70, 128, 241, 0, 0, 0, 0, 0, 32, 15, 60, 0, 0, 0, 128, 122, 37, 133, 90, 2, 99, 1, 227, 0, 0, 0, 0, 51, 212, 223, 63, 0, 0, 0, 128, 255, 127, 121, 165, 250, 185, 128, 241, 0, 0, 0, 0, 51, 212, 223, 63, 0, 0, 0, 128, 132, 218, 121, 165, 4, 70, 128, 241, 0, 0, 0, 0, 51, 212, 223, 63, 0, 0, 0, 128, 132, 218, 255, 255, 2, 99, 1, 227, 0, 0, 0, 0, 51, 212, 223, 63, 0, 0, 0, 128, 122, 37, 121, 165, 252, 156, 1, 227, 188, 106, 184, 190, 115, 242, 96, 63, 188, 106, 184, 62, 255, 127, 133, 90, 252, 156, 1, 227, 188, 106, 184, 190, 115, 242, 96, 63, 188, 106, 184, 62, 255, 127, 121, 165, 250, 185, 128, 241, 188, 106, 184, 190, 115, 242, 96, 63, 188, 106, 184, 62, 122, 37, 121, 165, 252, 156, 1, 227, 188, 106, 184, 190, 115, 242, 96, 63, 188, 106, 184, 62, 122, 37, 133, 90, 2, 99, 1, 227, 188, 106, 184, 190, 115, 242, 96, 63, 188, 106, 184, 190, 122, 37, 121, 165, 252, 156, 1, 227, 188, 106, 184, 190, 115, 242, 96, 63, 188, 106, 184, 190, 122, 37, 133, 90, 2, 99, 1, 227, 188, 106, 184, 190, 115, 242, 96, 63, 188, 106, 184, 190, 132, 218, 0, 0, 4, 70, 128, 241, 188, 106, 184, 190, 115, 242, 96, 63, 188, 106, 184, 190, 132, 218, 255, 255, 2, 99, 1, 227, 188, 106, 184, 62, 115, 242, 96, 63, 188, 106, 184, 190, 132, 218, 0, 0, 4, 70, 128, 241, 188, 106, 184, 62, 115, 242, 96, 63, 188, 106, 184, 190, 132, 218, 255, 255, 2, 99, 1, 227, 188, 106, 184, 62, 115, 242, 96, 63, 188, 106, 184, 190, 132, 218, 133, 90, 250, 185, 128, 241, 188, 106, 184, 62, 115, 242, 96, 63, 188, 106, 184, 190, 132, 218, 121, 165, 4, 70, 128, 241, 188, 106, 184, 62, 115, 242, 96, 63, 188, 106, 184, 62, 255, 127, 133, 90, 252, 156, 1, 227, 188, 106, 184, 62, 115, 242, 96, 63, 188, 106, 184, 62, 255, 127, 121, 165, 250, 185, 128, 241, 188, 106, 184, 62, 115, 242, 96, 63, 188, 106, 184, 62, 132, 218, 133, 90, 250, 185, 128, 241, 188, 106, 184, 62, 115, 242, 96, 63, 188, 106, 184, 62, 132, 218, 121, 165, 4, 70, 128, 241)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_xhatn")
+shadow_mesh = SubResource("ArrayMesh_peg54")
 
-[sub_resource type="Animation" id="Animation_2aic1"]
+[sub_resource type="Animation" id="Animation_ulxrd"]
 length = 0.001
 loop_mode = 1
 tracks/0/type = "value"
@@ -68,7 +68,7 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_bbpps"]
+[sub_resource type="Animation" id="Animation_1umv8"]
 resource_name = "Rotation"
 length = 2.0
 loop_mode = 1
@@ -97,13 +97,13 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.28319, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lr2ol"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_opf7l"]
 _data = {
-"RESET": SubResource("Animation_2aic1"),
-"Rotation": SubResource("Animation_bbpps")
+"RESET": SubResource("Animation_ulxrd"),
+"Rotation": SubResource("Animation_1umv8")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_hokyn"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_r15et"]
 
 [node name="Crystal" type="CharacterBody3D" groups=["item"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -112,16 +112,16 @@ script = ExtResource("2_s6ilt")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.926128, 0.37721, 0, -0.37721, 0.926128, 0, 0, 0, 1, -0.498686, 0, 0)
-mesh = SubResource("ArrayMesh_2crao")
+mesh = SubResource("ArrayMesh_8e884")
 skeleton = NodePath("")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Cube")
 autoplay = "Rotation"
 libraries = {
-"": SubResource("AnimationLibrary_lr2ol")
+"": SubResource("AnimationLibrary_opf7l")
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-0.960049, 0, -0.279832, 0, 1, 0, 0.279832, 0, -0.960049, 0, 0.759603, 0)
-shape = SubResource("SphereShape3D_hokyn")
+shape = SubResource("SphereShape3D_r15et")
