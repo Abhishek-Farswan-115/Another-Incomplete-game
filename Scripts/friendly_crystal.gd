@@ -3,11 +3,11 @@ extends CharacterBody3D
 @export var speed: = 10.0
 
 @onready var follower_nav: NavigationAgent3D = $Follower_Nav
+@onready var static_position: = position
 
 var player: CharacterBody3D = null
 var destination: = Vector3.ZERO
 var pick_ups: = []
-@onready var static_position: = position
 
 
 func _ready() -> void:
@@ -37,8 +37,14 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_pick_up_range_body_entered(body: Node3D) -> void:
+	pick_ups.erase(body)
+	body.queue_free()
+	Global.add_point(1)
+
+
+func _on_active_range_body_entered(body: Node3D) -> void:
 	pick_ups.push_back(body)
 
 
-func _on_pick_up_range_body_exited(body: Node3D) -> void:
+func _on_active_range_body_exited(body: Node3D) -> void:
 	pick_ups.erase(body)
