@@ -204,7 +204,6 @@ script = ExtResource("1_nv5wu")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -213,31 +212,41 @@ grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 custom_minimum_size = Vector2(500, 250)
-layout_mode = 2
+offset_right = 500.0
+offset_bottom = 250.0
 theme = SubResource("Theme_far88")
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
-layout_mode = 2
+offset_right = 500.0
+offset_bottom = 250.0
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
+offset_left = 50.0
+offset_top = 10.0
+offset_right = 450.0
+offset_bottom = 240.0
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+offset_right = 400.0
+offset_bottom = 66.0
 theme_override_fonts/font = ExtResource("1_3h7dp")
 theme_override_font_sizes/font_size = 50
 text = "Pause"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 70.0
+offset_right = 400.0
+offset_bottom = 74.0
 
 [node name="ResumeButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 78.0
+offset_right = 400.0
+offset_bottom = 126.0
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_3h7dp")
 theme_override_font_sizes/font_size = 30
@@ -245,7 +254,9 @@ shortcut = SubResource("Shortcut_stlpc")
 text = "Resume"
 
 [node name="MainMenuButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 130.0
+offset_right = 400.0
+offset_bottom = 178.0
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_3h7dp")
 theme_override_font_sizes/font_size = 30
@@ -253,7 +264,9 @@ text = "Main Menu
 "
 
 [node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 182.0
+offset_right = 400.0
+offset_bottom = 230.0
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_3h7dp")
 theme_override_font_sizes/font_size = 30
